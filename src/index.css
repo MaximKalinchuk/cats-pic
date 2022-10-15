@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -10,4 +11,111 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.background-img {
+  background: url('../public/imgs/background.jpg');
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+}
+
+.menu{
+  height: 70px;
+  width: 100%;
+  background-color: black;
+  opacity:0.7
+}
+
+.menu-container {
+  height: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-navbar {
+  list-style-type: none;
+}
+
+.menu-navbar li {
+  display: inline-block;
+}
+
+.github_link {
+  text-decoration: none;
+  padding-right: 75px;
+  font-size: 25px;
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+}
+
+.github_link:hover {
+  color: rgb(206, 15, 15);
+}
+
+.menu-navbar li a {
+  text-decoration: none;
+  padding-left: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  color: rgb(207, 207, 207);
+}
+
+.logo {
+    text-decoration: none;
+    padding-left: 20px;
+    padding-right: 10px;
+    font-size: 26px;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+
+}
+
+.menu-navbar li a:hover {
+  color: rgb(255, 255, 255);
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid rgb(255, 255, 255);
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: rgb(255, 255, 255) transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
