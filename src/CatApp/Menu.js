@@ -1,16 +1,16 @@
 import React from "react";
 
-function Menu() {
+function Menu({ setGeneralPage, setFavoritePage }) {
     return (
         <div className="menu">
             <div className="menu-container">
                 <ul className="menu-navbar">
                     <a className="logo" href="#">CAT-PICS</a>
                     <li>
-                        <a href="#">Главная</a>
+                        <a onClick={setGeneralPage} href="#">Главная</a>
                     </li>
                     <li>
-                        <a href="#">Избранные</a>
+                        <a onClick={setFavoritePage} href="#">Избранные</a>
                     </li>
                     <li>
                         <a href="#">Помощь</a>
