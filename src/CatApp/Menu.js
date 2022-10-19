@@ -16,7 +16,7 @@ function Menu({ setGeneralPage, setFavoritePage }) {
                         <a href="#">Помощь</a>
                     </li>
                 </ul>
-                <a className="github_link" href="#">GITHUB</a>
+                <a className="github_link" target='_blank' href="https://github.com/MaximKalinchuk">GITHUB</a>
             </div>
         </div>
     )

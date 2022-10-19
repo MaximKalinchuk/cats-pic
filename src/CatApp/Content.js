@@ -2,7 +2,7 @@ import React from "react";
 import ContentItem from "./ContentItem";
 
 
-function Content({ cats, updateModal }) {
+function Content({ cats, updateImgModal }) {
 
     const styles = {
         display: 'flex',
@@ -10,11 +10,10 @@ function Content({ cats, updateModal }) {
         flexWrap: 'wrap',
     }
 
-    // console.log(cats)
     return (
         <div style={styles} className="catsImg">
             {cats.map((cat, index) => {
-                return <ContentItem updateModal={updateModal} key={index} cat={cat}/>
+                return <ContentItem updateImgModal={updateImgModal} key={index} cat={cat}/>
             })}
         </div>
     )

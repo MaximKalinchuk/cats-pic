@@ -1,11 +1,10 @@
 import React from "react";
 
-function ContentItem({ cat, updateModal }) {
-    // console.log(cat)
+function ContentItem({ cat, updateImgModal }) {
 
     return (
         <>
-            <img onClick={updateModal} className="catImg" src={cat.url} />
+            <img onClick={updateImgModal} className="catImg" src={cat.url} />
         </>
     )
 }

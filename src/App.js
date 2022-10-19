@@ -3,6 +3,7 @@ import Menu from "./CatApp/Menu";
 import Content from "./CatApp/Content";
 import axios from "axios";
 import Modal from "./Modal/Modal";
+import Loader from "./CatApp/Loader";
 
 function App() {
   const [catsList, setCats] = React.useState([]);
@@ -41,8 +42,12 @@ function App() {
   })
   }
 
-  function updateModal(event) {
-      setModalImg(event.target.src)
+  function updateImgModal(event) {
+    setModalImg(event.target.src)
+    setModal(!modal)
+  }
+
+  function updateModal() {
       setModal(!modal)
 }
 
@@ -55,31 +60,48 @@ function App() {
   }
 
   function addFavoriteCats(cat) {
-    if (!favoriteCats.includes(cat)) {
+    let doubleFavoriteCat = false
+    for (const favoriteCat of favoriteCats) {
+      if (favoriteCat.url === cat) {
+        doubleFavoriteCat = true;
+        // alert('Этот котик уже есть у вас в избранных')
+        break;
+      }
+    }
+
+    if (!doubleFavoriteCat) {
       const array = cat.split('/')
       const id = array[array.length - 1].split('.')[0]
       setFavoriteCats([...favoriteCats, {id, url: cat}])
+      // alert('Котик сохранён')
     }
   }
-  console.log(favoriteCats)
+
+  function removeFavoriteCat(cat) {
+    const newCatArray = favoriteCats.filter((favoriteCat) => favoriteCat.url !== cat)
+    setFavoriteCats(newCatArray)
+  }
 
   if (page === 'GeneralPage') {
     return (
       <div className="App">
         <Menu setFavoritePage={setFavoritePage} setGeneralPage={setGeneralPage}/>
-        {modal && <Modal addFavoriteCats={addFavoriteCats} updateModal={updateModal} modalImg={modalImg}/>}
-        {catsList.length ? <Content updateModal={updateModal} cats={catsList}/> : null}
-        {loading ? <center><div className="lds-ring"><div></div><div></div><div></div><div></div></div></center> :
+        {modal && <Modal addFavoriteCats={addFavoriteCats} updateModal={updateModal} modalImg={modalImg} page={page}/>}
+        {catsList.length ? <Content updateImgModal={updateImgModal} cats={catsList}/> : null}
+
+        {loading ? <Loader /> :
           <div className="elseCatButton">
             <button onClick={addCats} style={{}}>Загрузить ещё</button>
           </div>}
+
       </div>
     );
   } else if (page === 'FavoritePage'){
     return (
       <div className="App">
         <Menu setFavoritePage={setFavoritePage} setGeneralPage={setGeneralPage}/>
-        {favoriteCats.length ? <Content updateModal={updateModal} cats={favoriteCats}/> : null}
+        {favoriteCats.length ? <Content updateImgModal={updateImgModal} cats={favoriteCats}/> : <div>У вас нет избранных котов</div>}
+        {modal && <Modal removeFavoriteCat={removeFavoriteCat} updateModal={updateModal} modalImg={modalImg} page={page}/>}
       </div>
     );
   }
